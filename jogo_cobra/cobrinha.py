@@ -8,4 +8,4 @@ class Cobra:
         self.corpo = corpo
         self.direcao = direcao
         
-         
+                    
