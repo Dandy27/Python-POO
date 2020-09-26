@@ -23,8 +23,32 @@ class Cobra:
 
     
     def move(self, posicao_comida):
-        pass
+        if self.direcao == 'DIREITA':
+            self.posicao[0] += 10
+        if self.direcao == 'ESQUERDA':
+            self.posicao[0] -= 10
+        if self.direcao == 'CIMA':
+            self.posicao[1] -= 10
+        if self.direcao == 'BAIXO':
+            self.posicao[1] += 10
+        
+
+        # adiciona pedaço do corpo da cobra da frente da cabeça
+        self.corpo.insert(0, list(self.posicao))
+        # confere se comeu comida
+        if self.posicao == posicao_comida:
+            return True
+
+        # remove pedaço da cauda
+        self.corpo.pop()
+        return False
+
+
 
 
     def verifica_colisão(self):
         pass
+
+
+
+
