@@ -9,6 +9,8 @@ from comida import Comida
 pygame.init()
 TAM_TELA =(300,400)
 tela = pygame.display.set_mode(TAM_TELA)
+
+tempo = pygame.time.Clock() # cronometro | tempo 
 cobra = Cobra()
 comida = Comida()
 posicao_comida = comida.posicao
@@ -22,7 +24,18 @@ while True:
             pygame.quit()
             #fecha o script (janela)
             sys.exit()
-        
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                cobra.muda_direcao('DIREITA')
+            if event.key == pygame.K_UP:
+                cobra.muda_direcao('CIMA')
+            if event.key == pygame.K_DOWN:
+                cobra.muda_direcao('BAIXO')
+            if event.key == pygame.K_LEFT:
+                cobra.muda_direcao('ESQUERDA')
+
+    cobra.move(posicao_comida)
+
 
     #desenha a cobra
     for pos in cobra.corpo:
@@ -38,3 +51,7 @@ while True:
 
     # atualiza a tela a cada frame
     pygame.display.update()
+
+
+    # Frames por segundo 
+    tempo.tick(22)
