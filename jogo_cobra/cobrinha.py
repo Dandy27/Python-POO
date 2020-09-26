@@ -9,3 +9,22 @@ class Cobra:
         self.direcao = direcao
         
                     
+    def muda_direcao(self, nova_direcao):
+        if nova_direcao == 'DIREITA' and not self.direcao == 'ESQUERDA':
+            self.direcao = 'DIREITA'
+        if nova_direcao == 'ESQUERDA' and not self.direcao == 'DIREITA':
+            self.direcao = 'ESQUERDA'
+        if nova_direcao == 'CIMA' and not self.direcao == 'BAIXO':
+            self.direcao = 'CIMA'
+        if nova_direcao == 'BAIXO' and not self.direcao == 'CIMA':
+            self.direcao = 'BAIXO'
+
+
+
+    
+    def move(self, posicao_comida):
+        pass
+
+
+    def verifica_colisão(self):
+        pass

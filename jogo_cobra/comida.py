@@ -7,3 +7,6 @@ class Comida:
                         random.randrange(10, self.tam_tela[1], 10)]
         self.devorada = False
 
+
+    def gera_nova_comida(self):
+        pass
