@@ -1,8 +1,10 @@
 import pygame
 import sys
 import random
+from time import sleep
 from cobrinha import Cobra
 from comida import Comida
+
 
 # inicializar o pygame
 
@@ -38,6 +40,11 @@ while True:
     # se a cobra comer a comida
     if cobra.move(posicao_comida):
         comida.devorada = True
+
+    if cobra.verifica_colisao():
+        sleep(2)
+        pygame.quit()
+        sys.exit()
 
 
     #desenha a cobra

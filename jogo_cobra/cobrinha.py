@@ -44,10 +44,25 @@ class Cobra:
         return False
 
 
+    def verifica_colisao(self):
+        # posicao => [esquerda, cima]
+        # tam_tela => [largura, altura]
+
+        # se a dis_esquerda > tam_tela_horizontal ou se a dist_esquerda < 0
+        if self.posicao[0] >  (self.tam_tela[0] -10) or self.posicao[0] < 0:
+            return True
+
+         # se dist_cima > tam_tela_vertical  ou se a dist_cima < 0   
+        if self.posicao[1] >  (self.tam_tela[1] -10) or self.posicao[1] < 0:
+            return True
 
 
-    def verifica_colisão(self):
-        pass
+        # checar colisão com o corpo
+        for parte_do_corpo in self.corpo[1:]:
+            if self.posicao == parte_do_corpo:
+                return True
+
+
 
 
 
