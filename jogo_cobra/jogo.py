@@ -5,14 +5,17 @@ from time import sleep
 from cobrinha import Cobra
 from comida import Comida
 
+#iniciar fonte 
+pygame.font.init()
+minha_fonte = pygame.font.SysFont('Comic Sans MS', 20)
 
 # inicializar o pygame
 
 pygame.init()
 TAM_TELA =(300,400)
 tela = pygame.display.set_mode(TAM_TELA)
-
 tempo = pygame.time.Clock() # cronometro | tempo 
+pontuacao = 0
 cobra = Cobra()
 comida = Comida()
 posicao_comida = comida.posicao
@@ -40,13 +43,19 @@ while True:
     # se a cobra comer a comida
     if cobra.move(posicao_comida):
         comida.devorada = True
+        pontuacao += 1
 
     if cobra.verifica_colisao():
+        voce_perdeu = minha_fonte.render('SE FUDEU!', True, (255, 255, 255))
+        tela.blit(voce_perdeu, (80,180))
+        pygame.display.flip()
         sleep(2)
         pygame.quit()
         sys.exit()
 
-
+    # texto da pontuação 
+    pontos = minha_fonte.render(f'Pontuação: {pontuacao}', True, (255, 255 ,255))
+    tela.blit(pontos, (10,10))
     #desenha a cobra
     for pos in cobra.corpo:
         pygame.draw.rect(tela, pygame.Color(255,204,0), # -> cor da cobra (amarela)
