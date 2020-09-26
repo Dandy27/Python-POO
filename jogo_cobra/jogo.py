@@ -34,7 +34,10 @@ while True:
             if event.key == pygame.K_LEFT:
                 cobra.muda_direcao('ESQUERDA')
 
-    cobra.move(posicao_comida)
+    posicao_comida = comida.gera_nova_comida()
+    # se a cobra comer a comida
+    if cobra.move(posicao_comida):
+        comida.devorada = True
 
 
     #desenha a cobra
